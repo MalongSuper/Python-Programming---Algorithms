@@ -1,7 +1,7 @@
 # 0/1 Knapsack Problem using Dynamic Programming (Bottom-Up Approach)
 
 
-def knapsack_tabulation(values, weights, capacity):
+def knapsack_dp(values, weights, capacity):
     n = len(values)
     table = [[0]*(capacity + 1) for y in range(n + 1)]
 
@@ -19,7 +19,22 @@ def knapsack_tabulation(values, weights, capacity):
     return table[n][capacity]
 
 
-values = [300, 200, 400, 500]
-weights = [2, 1, 5, 3]
-capacity = 10
-print("\nMaximum value in Knapsack =", knapsack_tabulation(values, weights, capacity))
+def main():
+    w_list = []
+    v_list = []
+    print("Knapsack Problem (Dynamic Programming Approach)")
+    k = int(input("Enter the bag weight: "))
+    n = int(input("Enter number of items: "))
+    print("Weight")
+    for i in range(1, n + 1):
+        w = int(input(f"Enter w{i}: "))
+        w_list.append(w)
+    print("Value")
+    for j in range(1, n + 1):
+        v = int(input(f"Enter v{j}: "))
+        v_list.append(v)
+    result = knapsack_dp(v_list, w_list, k)
+    print("Maximum Value in Knapsack:", result)
+
+
+main()
